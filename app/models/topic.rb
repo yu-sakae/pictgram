@@ -9,4 +9,7 @@ class Topic < ApplicationRecord
   
   has_many :favorites
   has_many :favorite_users, through: :favorites, source: 'user'
+  def favorite_user(user_id)
+    favorites.find_by(user_id: user_id)
+  end
 end
