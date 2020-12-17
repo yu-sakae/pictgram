@@ -19,12 +19,20 @@
                 <% end %>
               <% end %>
             <% else %>
-              <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+                <%= link_to root_path, data: { confirm: 'いいねを押す事ができるのは会員様のみです。会員登録またはログインをしますか？' } do %>
+                  <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+                <% end %>
             <% end %>
             <span>
               <%= topic.favorite_users.count %>
             </span>
-            <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <% if logged_in? %>
+              <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <% else %>
+                <%= link_to root_path, data: { confirm: 'コメントを残す事ができるのは会員様のみです。会員登録またはログインをしますか？' } do %>
+                  <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+                <% end %>
+            <% end %>
             <span>
               <%= topic.comments.count %>
             </span>
@@ -35,7 +43,7 @@
               <% topic.comments.each do |c| %>
                 <p class="topic-text"><%= c.comment %></p>
                 <% if logged_in? %>
-                  <%= link_to comments_path(topic_id: topic.id), method: :delete do %>
+                  <%= link_to comments_path(topic_id: topic.id), method: :delete , data: { confirm: '本当に削除しますか？' } do %>
                     <p class="topic-text">削除</p>
                   <% end %>
                 <% end %>
