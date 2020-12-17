@@ -102,6 +102,19 @@ h1, h2 {
   }
 }
 
+.btn-black2 {
+  color: #565656;
+  border: 1px solid #565656;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  background-color: rgba(0,0,0,0.0);
+  
+  &:hover {
+    color: #565656;
+  }
+}
+
 .topic-new-wrapper {
   padding-top: 120px;
 }
@@ -143,6 +156,12 @@ h1, h2 {
       height: 30px;
       margin-left: 20px;
       background-color: #b8b8b8;
+    }
+    
+    .comment-text {
+      font-size: 20px;
+      padding-right: 20px;
+      padding-left: 20px;
     }
   }
 }

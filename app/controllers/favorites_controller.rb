@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
   def index
     @favorite_topics = current_user.favorite_topics
+    @comment = Comment.new
   end
 
   def create
@@ -19,4 +20,5 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     redirect_to topics_path, success: 'お気に入りを解除しました'
   end
+
 end
