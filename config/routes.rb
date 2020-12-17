@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'topics/new'
   get 'topics/index'
+  delete '/topics', to: 'topics#destroy'
   get 'sessions/new'
 
   root 'pages#index'
