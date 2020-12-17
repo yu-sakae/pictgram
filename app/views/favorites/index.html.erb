@@ -24,12 +24,22 @@
             <span>
               <%= topic.comments.count %>
             </span>
+            <% if logged_in? %>
+              <%= link_to topics_path(topic_id: topic.id), method: :delete , data: { confirm: '本当に削除しますか？' } do %>
+                <p class="topic-text">投稿を削除</p>
+              <% end %>
+            <% end %>
             <p class="topic-text">
               <%= topic.description %>
             </p>
             <p class="comment-text">コメント</p>
               <% topic.comments.each do |c| %>
-              <p class="topic-text"><%= c.comment %></p>
+                <p class="topic-text"><%= c.comment %></p>
+                <% if logged_in? %>
+                  <%= link_to comments_path(topic_id: topic.id), method: :delete , data: { confirm: '本当に削除しますか？' } do %>
+                    <p class="topic-text">コメントを削除</p>
+                  <% end %>
+                <% end %>
               <% end %>
             <% if logged_in? %>
               <%= form_for @comment do |f| %>
